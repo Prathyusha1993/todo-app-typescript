@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [task, setTask] = useState<string>('');
+  const [deadline, setDeadline] = useState<number>(0);
+  const [todo, setTodo] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='header'>
+        <div className='input-container'>
+        <input type='text' value={task} onChange={(e)=>setTask(e.target.value)} placeholder='Enter Task' />
+        <input type='number' value={deadline} onChange={(e) =>setDeadline(e.target.valueAsNumber)} placeholder='Deadline in days...'/>
+        </div>
+        <button> Add Task</button>
+      </div>
+      <div className='todolist'></div>
     </div>
   );
 }
